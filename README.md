@@ -1,6 +1,6 @@
-#备忘录
-###git常用操作
-···
+# 备忘录
+### git常用操作
+```
 1. git init
 2. git add .
 3. git commit -m "备注"
@@ -9,8 +9,8 @@
 //登录用户操作<br>
 git config --global user.name "你的名称"<br>
 git config --global user.email "你的邮箱"
-···
-###vue项目初始化
+```
+### vue项目初始化
 ```
 1.安装vue
 	npm i vue
