@@ -10,7 +10,7 @@
 git config --global user.name "你的名称"
 git config --global user.email "你的邮箱"
 //切换库
-https://gitee.com/liublog/blog.git
+git remote set-url origin xxx(新的仓库地址)
 ```
 ### vue项目初始化
 ```
