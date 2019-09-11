@@ -9,6 +9,8 @@
 //登录用户操作
 git config --global user.name "你的名称"
 git config --global user.email "你的邮箱"
+//切换库
+https://gitee.com/liublog/blog.git
 ```
 ### vue项目初始化
 ```
