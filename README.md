@@ -19,7 +19,7 @@ git remote set-url origin xxx(新的仓库地址)
 2.安装vue-cli3
  	npm i @vue/cli -g
 3.打开vue-cli3自带的项目管理界面创建项目或者命令行创建
-	vue ui（推荐，可视化操作更方便） 或 vue create my-project(cd 到想要创建项目的目录)
+	vue ui（推荐，可视化操作更方便） 或 vue create my-project(cd 到想要创建项目的目录)  如果提示vue不是内部命令，需在电脑中找到vue.cmd文件，并保存路径添加到系统环境变量中。
 	配置中可以勾选需要的选项
 4.安装element-ui
 	npm i element-ui -S
