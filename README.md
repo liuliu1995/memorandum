@@ -7,10 +7,24 @@
 4. git remote add origin https://... 项目地址
 5. git push -u origin master
 //登录用户操作
-git config --global user.name "你的名称"
-git config --global user.email "你的邮箱"
-//切换库
-git remote set-url origin xxx(新的仓库地址)
+	git config --global user.name "你的名称"
+	git config --global user.email "你的邮箱"
+//修改远程仓库地址
+	方法有三种：
+	1.修改命令
+	git remote set-url origin [url]
+	2.先删后加
+	git remote rm origin
+	git remote add origin [url]
+	3.直接修改config文件
+# ssh配置
+	1.查看配置 ls ~/.ssh 如果有id_rsa id_rsa.pub两个文件表示已经配置了ssh
+	2.生成ssh key文件，执行ssh-keygen -t rsa -C "xxx.xxx.com"; 
+	    - t 指定密钥类型，默认是 rsa ，可以省略
+	    -C 设置注释文字，比如git的地址。
+	    -f 指定密钥文件存储文件名，我们省略了命令执行的时候会让你选择文件名，直接回车就会保存在默认的位置。
+	    然后会让你输入两次密码，最后出现 key fingerprint和 key's randomart 就表示创建成功了。
+	3.将ssh key添加到git中， vi id_rsa.pub 然后复制文件内容，进入git页面，个人设置，SSH Keys设置页面，在Key文本框中输入复制的内容，然后点Add Key按钮完成添加。
 ```
 ### vue项目初始化
 ```
