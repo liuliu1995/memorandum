@@ -45,46 +45,54 @@
  ```
 ### canvas识别图片颜色
 ```
-1.页面上放置一个dispplay:none的canvas标签，内部放置要识别颜色的图片img
-2. let imgs = document.querySelectorAll(".imgColor");//获取所有图片
-   let canvas = document.getElementById("mycanvas");
-   for (var i = 0; i < imgs.length; i++) {
-     let img = imgs[i];
-     getImgColor(canvas, img, i, $this);
-   }
+1.页面上放置一个dispplay:none的canvas标签
+2. let canvas = document.getElementById("mycanvas");
+   //下面是vue中读取banners图片颜色
+   let $this = this;
+   for (var i = 0; i < $this.banners.length; i++) {
+      // let img = imgs[i];
+      $this.getImgColor(canvas, i, $this);
+    }
 3.//获取图片颜色
-    getImgColor(canvas, img, index, $this) {
+    getImgColor(canvas, index, $this) {
+      var img = new Image();
+      img.crossOrigin = "";//处理canvas图片跨域问题
+      img.src = $this.banners[index].src;
       img.onload = function() {
         canvas.width = img.width;
         canvas.height = img.height;
         var context = canvas.getContext("2d");
         context.drawImage(img, 0, 0);
         // 获取像素数据
-        let data = context.getImageData(0, 0, img.width, img.height).data;
-	/* 以下获取图片头尾两点的颜色 */
+        let data1 = context.getImageData(0, 0, 1, 1).data;
+        let data2 = context.getImageData(
+          img.width - 1,
+          img.height - 1,
+          img.width,
+          img.height
+        ).data;
+        // 取所有像素的平均值
         let r1 = 0,
           r2 = 0,
           g1 = 0,
           g2 = 0,
           b1 = 0,
           b2 = 0;
-        // 索引值获取方式：纵坐标(y)*图像宽度(img.width)+横坐标(x)
-        var index1 = 0 * img.width + 0;
+        var index1 = 0;
         // 取开始像素的颜色
-        r1 += data[index1 * 4 + 0];
-        g1 += data[index1 * 4 + 1];
-        b1 += data[index1 * 4 + 2];
+        r1 += data1[index1 * 4 + 0];
+        g1 += data1[index1 * 4 + 1];
+        b1 += data1[index1 * 4 + 2];
 
         // 将最终的值取整
         r1 = Math.round(r1);
         g1 = Math.round(g1);
         b1 = Math.round(b1);
+        var index2 = 0;
 
-        var index2 = 0 * img.width + img.width;
-
-        r2 += data[index2 * 4 + 0];
-        g2 += data[index2 * 4 + 1];
-        b2 += data[index2 * 4 + 2];
+        r2 += data2[index2 * 4 + 0];
+        g2 += data2[index2 * 4 + 1];
+        b2 += data2[index2 * 4 + 2];
 
         // 将最终的值取整
         r2 = Math.round(r2);
@@ -95,7 +103,7 @@
         //rgb转16进制 位运算
         // const color = ((r << 16) | (g << 8) | b).toString(16);
         let style = "linear-gradient(to right," + color1 + "," + color2 + ")";
-        $this.banners[index].bc = style;//vue中根据获取的颜色修改背景渐变色
+        $this.banners[index].bc = style;
       };
 4. // 取所有像素的平均值（以下获取图片颜色主色方法）
                 let r = 0,
