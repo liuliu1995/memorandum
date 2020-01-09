@@ -128,3 +128,16 @@
                 b = Math.round(b)
 
 ```
+### koa2安装及启动
+```
+1.安装koa-generator
+npm i -g koa-generator
+2.创建koa2项目
+koa2 test[项目名称]
+3.初始化
+cd test
+npm i
+4.启动
+npm run start
+
+```
