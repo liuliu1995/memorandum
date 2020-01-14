@@ -139,5 +139,11 @@ cd test
 npm i
 4.启动
 npm run start
+5.连接mysql
+	安装sequelize
+	npm install sequelize --save
+	安装 mysql ， mysql2模块
+	npm install mysql mysql2 --save
+	
 
 ```
