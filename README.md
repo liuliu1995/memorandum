@@ -147,3 +147,38 @@ npm run start
 	
 
 ```
+### linux服务器
+```
+1.安装上传下载工具包
+yum install -y lrzsz
+2.安装nginx
+  a.安装依赖
+ yum install gcc-c++ 
+ yum install -y pcre pcre-devel
+ yum install -y zlib zlib-devel
+ yum install -y openssl openssl-devel
+  b.下载nginx的tar包
+  mkdir nginx
+  cd nginx
+  wget http://nginx.org/download/nginx-1.8.0.tar.gz
+  tar -xvf nginx-1.13.7.tar.g
+  //执行命令
+  ./configure
+  //执行make命令
+  make
+  //执行make install命令
+  make install
+  nginx主配置文件：/usr/local/nginx/conf/nginx.conf
+  nginx日志文件：/usr/local/nginx/logs/access.log
+  启动Nginx：/usr/local/nginx/sbin/nginx
+  nginx常用操作
+  //启动命令
+  安装路径下的/nginx/sbin/nginx
+  //停止命令
+  安装路径下的/nginx/sbin/nginx -s stop
+  或者 : nginx -s quit
+  //重启命令
+  安装路径下的/nginx/sbin/nginx -s reload
+  //查看进程命令
+  ps -ef | grep nginx
+```
